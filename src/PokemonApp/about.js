@@ -2,13 +2,16 @@ import React from "react";
 import "./styles.css";
 import Head from "./head";
 import { useSelector } from "react-redux";
-import { setDetails } from "../reducers/myReducers";
+// import { setDetails } from "../reducers/myReducers";
 
-const About = (data = { data }) => {
+const About = () => {
   const myState = useSelector((state) => {
     return state.setDetails;
   });
   console.log(myState);
+  const { attacks, hp, images, level, name } = myState;
+  const { name: attacksName, text } = attacks[0];
+  const { large } = images;
   return (
     <>
       <Head />
@@ -17,7 +20,7 @@ const About = (data = { data }) => {
           <div className="row">
             <div className="col-12 col-lg-5 right-col text-center">
               <figure className="lg-img">
-                <img src="../images/1_hires.png" alt="Pokemon-Img" />
+                <img src={large} alt={name} />
               </figure>
             </div>
             <div className="col-12 col-lg-7 ">
@@ -26,7 +29,7 @@ const About = (data = { data }) => {
                   <span>Name</span>
                 </div>
                 <div className="col-8 val">
-                  <span>Absol G</span>
+                  <span>{name}</span>
                 </div>
               </div>
               <div className="border-bot"></div>
@@ -36,7 +39,7 @@ const About = (data = { data }) => {
                   <span>Level</span>
                 </div>
                 <div className="col-8 val">
-                  <span>59</span>
+                  <span>{level}</span>
                 </div>
               </div>
               <div className="border-bot"></div>
@@ -46,7 +49,7 @@ const About = (data = { data }) => {
                   <span>HP</span>
                 </div>
                 <div className="col-8 val">
-                  <span>70</span>
+                  <span>{hp}</span>
                 </div>
               </div>
               <div className="border-bot"></div>
@@ -56,13 +59,8 @@ const About = (data = { data }) => {
                   <span>Attack</span>
                 </div>
                 <div className="col-8 val">
-                  <span>Feint Attacks</span>
-                  <p>
-                    Choose 1 of your opponent's Pokémon. This attack does 20
-                    damage to that Pokémon. This attack's damage isn't affected
-                    by Weakness, Resistance, Poké-Powers, Poké-Bodies, or any
-                    other effects on that Pokémon.
-                  </p>
+                  <span>{attacksName}</span>
+                  <p>{text} </p>
                 </div>
               </div>
               <div className="border-bot"></div>
