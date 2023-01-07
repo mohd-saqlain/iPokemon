@@ -23,7 +23,7 @@ const About = () => {
                 <img src={large} alt={name} />
               </figure>
             </div>
-            <div className="col-12 col-lg-7 ">
+            <div className="col-12 col-lg-7 pt-5 ">
               <div className="row">
                 <div className="col-4 at">
                   <span>Name</span>

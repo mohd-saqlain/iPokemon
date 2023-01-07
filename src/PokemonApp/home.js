@@ -1,12 +1,11 @@
 import { React, useEffect, useState } from "react";
 import "./styles.css";
 import Head from "./head";
-import { Link } from "react-router-dom";
-import { useDispatch } from "react-redux";
+import Loading from "./loading";
+import Cards from "./Cards";
 
 const Home = () => {
   const [myData, setMyData] = useState(false);
-  const dispatch = useDispatch();
   var URL = "https://api.pokemontcg.io/v2/cards?page=1&pageSize=100";
   const fetchAPI = async () => {
     try {
@@ -25,35 +24,10 @@ const Home = () => {
     return (
       <>
         <Head />
-        <section className="first">
-          <div className="main">
-            {data.map((curEle) => {
-              const { id, name } = curEle;
-              const { small } = curEle.images;
-              return (
-                <div className="cart-main" key={id}>
-                  <figure>
-                    <img src={small} alt={name} />
-
-                    <figcaption>
-                      <Link
-                        to="./About"
-                        onClick={() =>
-                          dispatch({ type: "GETDETAILS", payLoad: curEle })
-                        }
-                      >
-                        {name}
-                      </Link>
-                    </figcaption>
-                  </figure>
-                </div>
-              );
-            })}
-          </div>
-        </section>
+        <Cards data={data} />
       </>
     );
-  } else return <h1>Loading...</h1>;
+  } else return <Loading />;
 };
 
 export default Home;

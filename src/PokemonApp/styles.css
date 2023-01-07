@@ -12,6 +12,7 @@ html {
 
 .first {
     padding-top: 9rem;
+    padding-bottom: 2rem;
 }
 
 .main {
@@ -114,4 +115,22 @@ header{
     background-color: rgba(7, 2, 2, .5);
     width: 90%;
     margin-left: 1rem;
+}
+
+@media(max-width:670px){
+    .main{
+        width: 95%;
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        column-gap: 0;
+
+    }
+
+    .first{
+        padding-top: 10rem;
+    }
+    figure {
+        /* padding: 0 1rem; */
+        padding-top: .5rem;
+    }
 }
